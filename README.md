@@ -1,0 +1,2 @@
+# SuperTrader
+Tele + AI Trader 
