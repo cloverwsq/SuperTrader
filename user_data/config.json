@@ -1,9 +1,9 @@
 
 {
     "$schema": "https://schema.freqtrade.io/schema.json",
-    "max_open_trades": 1,
+    "max_open_trades": 5,
     "stake_currency": "USDT",
-    "stake_amount": "unlimited",
+    "stake_amount": 200,
     "tradable_balance_ratio": 0.99,
     "fiat_display_currency": "USD",
     "dry_run": true,
@@ -18,7 +18,7 @@
         "unit": "minutes"
     },
     "entry_pricing": {
-        "price_side": "same",
+        "price_side": "other",
         "use_order_book": true,
         "order_book_top": 1,
         "price_last_balance": 0.0,
@@ -28,7 +28,7 @@
         }
     },
     "exit_pricing": {
-        "price_side": "same",
+        "price_side": "other",
         "use_order_book": true,
         "order_book_top": 1
     },
@@ -36,25 +36,30 @@
         "name": "binance",
         "key": "",
         "secret": "",
-        "ccxt_config": {},
-        "ccxt_async_config": {},
+        "ccxt_config": {
+            "enableRateLimit": true,
+            "timeout": 30000
+        },
+        "ccxt_async_config": {
+            "enableRateLimit": true,
+            "timeout": 30000
+        },
         "pair_whitelist": [
+            "BTC/USDT:USDT",
+            "ETH/USDT:USDT",
+            "SOL/USDT:USDT",
+            "XRP/USDT:USDT",
+            "ADA/USDT:USDT"
         ],
-        "pair_blacklist": [
-            "BNB/.*"
-        ]
+        "pair_blacklist": []
     },
     "pairlists": [
         {
-            "method": "VolumePairList",
-            "number_assets": 20,
-            "sort_key": "quoteVolume",
-            "min_value": 0,
-            "refresh_period": 1800
+            "method": "StaticPairList"
         }
     ],
     "telegram": {
-        "enabled": true,
+        "enabled": false,
         "token": "",
         "chat_id": ""
     },

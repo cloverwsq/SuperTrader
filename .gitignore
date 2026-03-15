@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Freqtrade runtime
+user_data/data/
+user_data/logs/
+user_data/tradesv3.sqlite
+user_data/tradesv3.sqlite-shm
+user_data/tradesv3.sqlite-wal
+
+# Claude Code
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db

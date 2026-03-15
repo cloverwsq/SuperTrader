@@ -4,30 +4,12 @@
 # --- Do not remove these imports ---
 import numpy as np
 import pandas as pd
-from datetime import datetime, timedelta, timezone
 from pandas import DataFrame
-from typing import Optional, Union
 
 from freqtrade.strategy import (
     IStrategy,
-    Trade,
-    Order,
-    PairLocks,
-    informative,  # @informative decorator
     # Hyperopt Parameters
-    BooleanParameter,
-    CategoricalParameter,
-    DecimalParameter,
     IntParameter,
-    RealParameter,
-    # timeframe helpers
-    timeframe_to_minutes,
-    timeframe_to_next_date,
-    timeframe_to_prev_date,
-    # Strategy helper functions
-    merge_informative_pair,
-    stoploss_from_absolute,
-    stoploss_from_open,
 )
 
 # --------------------------------
@@ -60,7 +42,7 @@ class SampleStrategy(IStrategy):
     INTERFACE_VERSION = 3
 
     # Can this strategy go short?
-    can_short: bool = False
+    can_short: bool = True
 
     # Minimal ROI designed for the strategy.
     # This attribute will be overridden if the config file contains "minimal_roi".
@@ -93,11 +75,11 @@ class SampleStrategy(IStrategy):
     ignore_roi_if_entry_signal = False
 
     # Hyperoptable parameters
-    buy_rsi = IntParameter(low=1, high=50, default=30, space="buy", optimize=True, load=True)
-    sell_rsi = IntParameter(low=50, high=100, default=70, space="sell", optimize=True, load=True)
-    short_rsi = IntParameter(low=51, high=100, default=70, space="sell", optimize=True, load=True)
+    buy_rsi = IntParameter(low=1, high=50, default=35, space="buy", optimize=True, load=True)
+    sell_rsi = IntParameter(low=50, high=100, default=60, space="sell", optimize=True, load=True)
+    short_rsi = IntParameter(low=51, high=100, default=65, space="sell", optimize=True, load=True)
     exit_short_rsi = IntParameter(
-        low=1, high=50, default=30, space="exit", optimize=True, load=True
+        low=1, high=50, default=40, space="exit", optimize=True, load=True
     )
 
     # Number of candles the strategy requires before producing valid signals
@@ -105,8 +87,8 @@ class SampleStrategy(IStrategy):
 
     # Optional order type mapping.
     order_types = {
-        "entry": "limit",
-        "exit": "limit",
+        "entry": "market",
+        "exit": "market",
         "stoploss": "market",
         "stoploss_on_exchange": False,
     }
