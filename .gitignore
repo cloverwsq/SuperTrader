@@ -12,6 +12,10 @@ user_data/tradesv3.sqlite
 user_data/tradesv3.sqlite-shm
 user_data/tradesv3.sqlite-wal
 
+# Raw data (large files, regenerate with downloader)
+data/raw/
+data/processed/
+
 # Claude Code
 .claude/
 

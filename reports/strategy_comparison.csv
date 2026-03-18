@@ -1,0 +1,5 @@
+Strategy,Net Return,Sharpe,Sortino,Calmar,Max DD,Trades,Win Rate,Composite
+breakout_meme,0.54%,5.135,17685019.790,121.695,0.06%,4,75.00%,7074045.965
+breakout_stable,3.69%,10.222,35.745,119.646,0.48%,70,50.00%,53.259
+bear_longonly,-0.49%,-6.699,-5.419,-11.258,0.53%,28,32.14%,-7.554
+momentum_scalp,-11.92%,-25.986,-29.676,-6.659,11.98%,513,22.22%,-21.664

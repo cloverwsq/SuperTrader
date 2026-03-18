@@ -1,0 +1,68 @@
+{
+    "data": {
+        "source": "binance",
+        "base_timeframe": "1m",
+        "since": "2025-01-01",
+        "until": "2025-03-15",
+        "cache_dir": "data/raw"
+    },
+    "strategies": {
+        "breakout_stable": {
+            "signal_tf": "30m",
+            "exec_tf": "5m",
+            "pairs": ["BTC/USDT", "ETH/USDT", "SOL/USDT", "BNB/USDT", "XRP/USDT"],
+            "params": {
+                "lookback": 20,
+                "ema_trend": 50,
+                "ema_fast": 9,
+                "ema_slow": 21,
+                "vol_threshold": 1.3
+            }
+        },
+        "breakout_meme": {
+            "signal_tf": "15m",
+            "exec_tf": "1m",
+            "pairs": ["DOGE/USDT", "SHIB/USDT", "PEPE/USDT", "WIF/USDT", "FLOKI/USDT"],
+            "params": {
+                "lookback": 10,
+                "sig_ema_fast": 8,
+                "sig_ema_slow": 21,
+                "vol_burst_threshold": 2.5
+            }
+        },
+        "momentum_scalp": {
+            "signal_tf": "5m",
+            "exec_tf": "1m",
+            "pairs": ["BTC/USDT", "ETH/USDT", "SOL/USDT", "DOGE/USDT", "XRP/USDT"],
+            "params": {
+                "fee_hurdle": 0.0012,
+                "atr_min": 0.0008,
+                "atr_max": 0.012
+            }
+        },
+        "bear_longonly": {
+            "signal_tf": "1h",
+            "exec_tf": "5m",
+            "pairs": ["BTC/USDT", "ETH/USDT", "SOL/USDT", "BNB/USDT", "ADA/USDT"],
+            "params": {
+                "regime_ema_fast": 20,
+                "regime_ema_slow": 50,
+                "vol_lookback": 24
+            }
+        }
+    },
+    "backtest": {
+        "initial_capital": 10000,
+        "maker_fee": 0.0005,
+        "taker_fee": 0.0005,
+        "slippage": 0.0002
+    },
+    "evaluation": {
+        "composite_weights": {
+            "sortino": 0.4,
+            "sharpe": 0.3,
+            "calmar": 0.3
+        },
+        "risk_free_rate": 0.0
+    }
+}
